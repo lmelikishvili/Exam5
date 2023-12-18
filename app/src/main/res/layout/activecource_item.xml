@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="319dp"
+    android:layout_height="105dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/active_cource_style">
+
+    <ImageView
+        android:id="@+id/ivCourceImage"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvBookinkTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="31dp"
+        android:text="Booket for 8 PM"
+        android:textColor="@color/booked_color"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/ivCourceImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8sp"
+        android:text="Booket for 8 PM"
+        android:textColor="@color/booked_color"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/ivCourceImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvBookinkTime" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

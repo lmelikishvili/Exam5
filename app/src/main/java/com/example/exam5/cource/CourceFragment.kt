@@ -15,8 +15,11 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
 
     private lateinit var activeCources: MutableList<ActiveCourse>
     private lateinit var newCources: MutableList<NewCourse>
-    private val adapter: NewCourceRvAdapter by lazy {
+    private val ncAdapter: NewCourceRvAdapter by lazy {
         NewCourceRvAdapter()
+    }
+    private val acAdapter: ActiveCourceRvAdapter by lazy {
+        ActiveCourceRvAdapter()
     }
 
     override fun setup() {
@@ -62,9 +65,9 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
 
 
                 with(binding){
-                    newCourceRecyclerView.adapter = adapter
+                    newCourceRecyclerView.adapter = ncAdapter
                     newCourceRecyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
-                    adapter.submitList(newCources)
+                    ncAdapter.submitList(newCources)
                 }
                 //d("UsersList", "${users}")
             }
@@ -99,11 +102,11 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
                 d("GetAcourcesList", "${activeCources}")
 
 
-//                with(binding){
-//                    usersRecyclerView.adapter = adapter
-//                    usersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-//                    adapter.submitList(users)
-//                }
+                with(binding){
+                    activeCourceRecyclerView.adapter = acAdapter
+                    activeCourceRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    acAdapter.submitList(activeCources)
+                }
 //                d("UsersList", "${users}")
             }
         }

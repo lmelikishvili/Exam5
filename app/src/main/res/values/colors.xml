@@ -3,5 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="back_color">#1F2E35</color>
+    <color name="booked_color">#3DD598</color>
 
 </resources>

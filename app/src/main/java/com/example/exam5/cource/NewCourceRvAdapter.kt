@@ -25,7 +25,7 @@ class NewCourceRvAdapter: ListAdapter<NewCourse, NewCourceRvAdapter.NewCourceVH>
             LayoutInflater.from(parent.context), parent, false
         ))
 
-    
+
     override fun onBindViewHolder(holder: NewCourceVH, position: Int) {
         holder.bind()
     }
