@@ -20,15 +20,12 @@ class NewCourceRvAdapter: ListAdapter<NewCourse, NewCourceRvAdapter.NewCourceVH>
 
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewCourceVH = NewCourceVH(
         NewcourceItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         ))
 
-
-
+    
     override fun onBindViewHolder(holder: NewCourceVH, position: Int) {
         holder.bind()
     }
