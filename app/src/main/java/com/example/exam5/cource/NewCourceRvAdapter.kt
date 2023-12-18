@@ -1,5 +1,6 @@
 package com.example.exam5.cource
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -40,6 +41,11 @@ class NewCourceRvAdapter: ListAdapter<NewCourse, NewCourceRvAdapter.NewCourceVH>
                 tvQuestion.text = "${newCource.question}"
                 tvTitle.text = "${newCource.title}"
             }
+
+            if (newCource.id == "2"){
+                binding.activeCourceLayout.setBackgroundColor(Color.parseColor("#f25454"))
+            }
+
 //            Glide.with(binding.root)
 //                .load(user.avatar)
 //                .into(binding.userImage)

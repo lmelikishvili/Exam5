@@ -38,8 +38,9 @@ class ActiveCourceRvAdapter: ListAdapter<ActiveCourse, ActiveCourceRvAdapter.Act
             activeCource = currentList[adapterPosition]
             with(binding) {
                 tvBookinkTime.text = "${activeCource.booking_time}"
-
             }
+
+
             Glide.with(binding.root)
                 .load(activeCource.image)
                 .into(binding.ivCourceImage)
