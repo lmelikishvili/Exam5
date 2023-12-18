@@ -2,6 +2,8 @@ package com.example.exam5.cource
 
 import android.util.Log.d
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.exam5.BaseFragment
 import com.example.exam5.databinding.FragmentCourceBinding
 import com.example.exam5.utils.RetrofitInstance
@@ -13,6 +15,9 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
 
     private lateinit var activeCources: MutableList<ActiveCourse>
     private lateinit var newCources: MutableList<NewCourse>
+    private val adapter: NewCourceRvAdapter by lazy {
+        NewCourceRvAdapter()
+    }
 
     override fun setup() {
         activeCources = mutableListOf()
@@ -56,12 +61,12 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
                 d("GetNcourcesList", "${newCources}")
 
 
-//                with(binding){
-//                    usersRecyclerView.adapter = adapter
-//                    usersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-//                    adapter.submitList(users)
-//                }
-//                d("UsersList", "${users}")
+                with(binding){
+                    newCourceRecyclerView.adapter = adapter
+                    newCourceRecyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
+                    adapter.submitList(newCources)
+                }
+                //d("UsersList", "${users}")
             }
         }
     }
