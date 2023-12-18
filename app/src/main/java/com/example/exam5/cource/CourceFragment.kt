@@ -1,14 +1,8 @@
 package com.example.exam5.cource
 
-import android.os.Bundle
 import android.util.Log.d
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.example.exam5.BaseFragment
-import com.example.exam5.R
 import com.example.exam5.databinding.FragmentCourceBinding
 import com.example.exam5.utils.RetrofitInstance
 import kotlinx.coroutines.launch
@@ -23,7 +17,8 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
     override fun setup() {
         activeCources = mutableListOf()
         newCources = mutableListOf()
-        getactiveCources()
+        getActiveCources()
+        getNewCources()
 
     }
 
@@ -36,8 +31,43 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
     }
 
 
+    private fun getNewCources(){
+        lifecycleScope.launch() {
+            val response = try {
+                RetrofitInstance.api.getUsers()
+            }catch (e: IOException){
+                return@launch
+            }catch (e: retrofit2.HttpException){
+                return@launch
+            }
+            if(response.isSuccessful && response.body() != null){
+                d("GetData", "${response.body()!!.new_courses}")
 
-    private fun getactiveCources(){
+                for (cource in response.body()!!.new_courses){
+                    newCources.add(NewCourse(
+                        duration = cource.duration,
+                        icon_type = cource.icon_type,
+                        id = cource.id,
+                        main_color = cource.main_color,
+                        question = cource.question,
+                        title = cource.title
+                    ))
+                }
+                d("GetNcourcesList", "${newCources}")
+
+
+//                with(binding){
+//                    usersRecyclerView.adapter = adapter
+//                    usersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+//                    adapter.submitList(users)
+//                }
+//                d("UsersList", "${users}")
+            }
+        }
+    }
+
+
+    private fun getActiveCources(){
         lifecycleScope.launch() {
             val response = try {
                 RetrofitInstance.api.getUsers()
@@ -73,4 +103,5 @@ class CourceFragment : BaseFragment<FragmentCourceBinding>(FragmentCourceBinding
             }
         }
     }
+
 }
